@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rack'
 require 'thin'
-require 'decorator'
+require './decorator'
 
 rack_app = lambda{|env| [200, {'Content-Type' => 'text/html'}, ["whatever rack app"]]}
 

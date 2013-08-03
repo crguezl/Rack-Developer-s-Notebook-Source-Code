@@ -1,7 +1,7 @@
 require "rubygems"
 require "rack"
 require "thin"
-require 'decorator'
+require './decorator'
 
 rack_app = lambda do |env|
   request = Rack::Request.new(env)
