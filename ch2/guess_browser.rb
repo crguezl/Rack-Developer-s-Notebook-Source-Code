@@ -1,13 +1,17 @@
 require "rubygems" 
 require "rack"
 require "thin"
+require 'debugger'
 
 rack_app = lambda do |env|
   request = Rack::Request.new(env)
   if request.path_info == '/guess'
      client = request['client']
-     if client && client.downcase == 'safari'
-       [200, {}, ["Good browser"]]
+     #debugger
+     if client && 
+        (['safari', 'chrome', 'firefox'].include?  client.downcase)
+       [200, {'Content-Type' => 'text/html'}, 
+        ["<h1>Good browser: #{client}</h1>"]]
      else
        [200, {}, ["Choose another browser"]]
      end

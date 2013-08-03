@@ -1,8 +1,10 @@
 require "rubygems"
 require "rack"
 require "thin"
+require 'debugger'
 
 rack_app = lambda do |env|
+  debugger
   request = Rack::Request.new(env)
   response = Rack::Response.new
   
