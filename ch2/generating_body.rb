@@ -8,15 +8,18 @@ rack_app = lambda do |env|
   body = "---------------Header-------------<br/>"
   
   if request.path_info == '/hello'
-    body << "Saying hi"
+    body << '<h1>'
+    body << "Saying hi "
     client = request['client']
     body << "from #{client}" if client
+    body << '</h1>'
   else
     body << "You need to provide the client information"
   end
   body << "<br/>----------footer-----------------"
   response.body = [body]
   response.headers['Content-Length'] = body.bytesize.to_s
+  response.headers['Content-Type'] = 'text/html'
   response.to_a
 end
 
